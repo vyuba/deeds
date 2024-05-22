@@ -665,14 +665,6 @@ video {
   z-index: 10000;
 }
 
-.z-30 {
-  z-index: 30;
-}
-
-.z-\[200\] {
-  z-index: 200;
-}
-
 .order-1 {
   order: 1;
 }
@@ -1749,16 +1741,16 @@ video {
   padding-top: 1rem;
 }
 
+.pt-5 {
+  padding-top: 1.25rem;
+}
+
 .pt-6 {
   padding-top: 1.5rem;
 }
 
 .pt-px {
   padding-top: 1px;
-}
-
-.pt-5 {
-  padding-top: 1.25rem;
 }
 
 .text-left {
@@ -2070,11 +2062,18 @@ video {
   --spacing: 60px;
   --buttonBackground: red;
   --buttonText: white;
+  --vh: 100vh;
 }
 
 /*
     Reset and defaults
   */
+
+.screen {
+  /* Use the custom property for height */
+  height: calc(var(--vh, 1vh) * 100);
+  width: 100%;
+}
 
 * {
   margin: 0;
