@@ -39,7 +39,7 @@
   </div>
 </div> {% endcomment %}
 
-<div id="main-product--{{ section.id }}" class="main-product">
+<div id="main-product--{{ section.id }}" class="main-product md:pt-16">
   <div class="width flex-col md:flex-row">
     <div class="main-product-left md:hidden">
       {% if product.selected_or_first_available_variant.featured_image %}
@@ -52,13 +52,13 @@
 
       <ul class="main-product-image-thumbs">
         {% for image in product.images %}
-          <li class="{% if image == featured %}selected{% endif %}"><img src="{{ image | image_url: master }}"></li>
+          <li class="{% if image == featured %}selected{% endif %}"><img src="{{ image | image_url: master }}" ></li>
         {% endfor %}
       </ul>
     </div>
 
     <div class=" md:grid grid-rows-1 hidden md:grid-cols-1 lg:grid-cols-2 gap-4 ml-4">
-      <img class="hidden md:block" src="{{ featured_image | img_url: 'large' }}" alt="{{ featured_image.alt | escape }}" height="" width="" id="ProductPhotoImg">
+      <img class="hidden md:block" src="{{ featured image | img_url: 'large' }}" alt="{{ featured image.alt | escape }}" height="" width="" id="ProductPhotoImg">
        {% for image in product.images %}
         {% comment %} {% render 'product-swipper',   %} {% endcomment %}
       {% endfor %} 
