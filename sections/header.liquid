@@ -59,7 +59,14 @@
               {% render 'icon-shopping-bag' %}
             </svg>
           </a>
-          <span class=" text-white">{{ cart.item_count }}</span>
+          <span class="flex gap-1 text-white cart-count ">
+          {% if cart.item_count != 0 %}
+              <span class="cart-count">{{ cart.item_count }}</span> 
+              <p>Item</p>
+              {% else %}
+                <p></p>
+            {% endif %}
+            </span>
         </div>
         {% if shop.customer_accounts_enabled == true %}
           <a href="{{ routes.account_login_url }}" class="text-base text-gray-500 hover:text-gray-900">Login</a>
