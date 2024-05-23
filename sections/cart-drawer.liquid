@@ -2,10 +2,13 @@
   <div class="cart-drawer-box w-screen md:w-[28rem] ">
     {% comment %} Header section {% endcomment %}
     <header class="cart-drawer-header">
-      <h2>{% render 'icon-shopping-bag' %}</h2>
+      <div class="flex items-center gap-1">
+        <h2>{% render 'icon-shopping-bag' %}</h2>
+
+        <span class="text-white">{{ cart.item_count }} items</span>
+      </div>
       
       <div class="cart-drawer-header-right">
-        <span class="cart-drawer-header-right-items">{{ cart.item_count }} items</span>
 
         <button class="cart-drawer-header-right-close" type="button">
           {% render 'icon-close-button' %}
