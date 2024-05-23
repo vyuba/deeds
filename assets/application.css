@@ -1070,6 +1070,82 @@ video {
   height: 100vh;
 }
 
+.h-\[1000px\] {
+  height: 1000px;
+}
+
+.h-\[700px\] {
+  height: 700px;
+}
+
+.h-\[800px\] {
+  height: 800px;
+}
+
+.h-\[840px\] {
+  height: 840px;
+}
+
+.h-\[820px\] {
+  height: 820px;
+}
+
+.h-\[805px\] {
+  height: 805px;
+}
+
+.h-\[803px\] {
+  height: 803px;
+}
+
+.h-\[801px\] {
+  height: 801px;
+}
+
+.h-\[800\.5px\] {
+  height: 800.5px;
+}
+
+.h-\[798px\] {
+  height: 798px;
+}
+
+.h-\[797px\] {
+  height: 797px;
+}
+
+.h-\[796px\] {
+  height: 796px;
+}
+
+.h-\[794px\] {
+  height: 794px;
+}
+
+.h-\[790px\] {
+  height: 790px;
+}
+
+.h-\[788px\] {
+  height: 788px;
+}
+
+.h-\[780px\] {
+  height: 780px;
+}
+
+.h-\[782px\] {
+  height: 782px;
+}
+
+.h-\[783px\] {
+  height: 783px;
+}
+
+.h-\[784px\] {
+  height: 784px;
+}
+
 .w-0 {
   width: 0px;
 }
@@ -2079,9 +2155,16 @@ video {
   box-sizing: border-box;
 }
 
+.medium{
+  font-family:var(--bodyFontMedium) ;
+}
+
+.Bold{
+  font-family:var(--bodyFontMedium) ;
+}
+
 body {
   font-size: 16px;
-  font-weight: var(--bodyFontWeight);
   line-height: 1.65;
   font-family: var(--bodyFont);
   text-rendering: optimizeLegibility;

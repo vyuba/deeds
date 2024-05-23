@@ -58,7 +58,7 @@
     </div>
 
     <div class="main-product-right md:ml-10 ml-0 pt-5 md:pt-0">
-      <h1 class="text-white">{{ product.title }}</h1>
+      <h1 class="text-white text-xl capitalize font-medium">{{ product.title }}</h1>
 
       <div class="main-product-prices">
         <p class="main-product-compare {% unless product.selected_or_first_available_variant.compare_at_price > product.selected_or_first_available_variant.price %}hide{% endunless %}">
@@ -147,7 +147,7 @@
           {% unless product.selected_or_first_available_variant.available %}
             disabled
           {% endunless %}
-          class="button full main-product-add-to-cart font-futura"
+          class="button full main-product-add-to-cart medium capitalize"
           type="submit"
           class="main-product-add"
         >
