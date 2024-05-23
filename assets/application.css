@@ -2436,7 +2436,7 @@ select {
 
 .main-product-option-radio input:checked + label,
   .main-product-option-radio label:hover {
-  border-color: var(--text);
+  border-color: red;
 }
 
 .main-product-option .main-product-select,
