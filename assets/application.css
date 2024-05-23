@@ -668,6 +668,10 @@ video {
   z-index: 10000;
 }
 
+.z-\[500\] {
+  z-index: 500;
+}
+
 .order-1 {
   order: 1;
 }
@@ -1144,6 +1148,10 @@ video {
 
 .h-\[784px\] {
   height: 784px;
+}
+
+.h-\[900px\] {
+  height: 900px;
 }
 
 .w-0 {

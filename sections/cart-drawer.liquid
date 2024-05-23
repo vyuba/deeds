@@ -2,8 +2,8 @@
   <div class="cart-drawer-box">
     {% comment %} Header section {% endcomment %}
     <header class="cart-drawer-header">
-      <h2>Your cart</h2>
-
+      <h2>{% render 'icon-shopping-bag' %}</h2>
+      
       <div class="cart-drawer-header-right">
         <span class="cart-drawer-header-right-items">{{ cart.item_count }} items</span>
 
@@ -61,11 +61,15 @@
                         {% render 'icon-minus' %}
                       </button>
                       <input
+                        class="text-white"
                         type="text"
                         readonly
-                        value="{{ item.quantity }}">
+                        value="'{{ item.quantity }}'">
                       <button class="cart-drawer-quantity-selector-plus" type="button">{% render 'icon-plus' %}</button>
                     </div>
+                  </div>
+                  <div>
+                    {% render 'icon-delete' %}
                   </div>
                   <div class="cart-drawer-item-main-flex-right">
                     <span>{{ item.final_line_price | money }}</span>
@@ -114,7 +118,7 @@
     z-index: 99999;
     display: flex;
     flex-direction: column;
-    padding: 24px;
+    /* padding: 24px; */
     transition: left 0s 0.2s
     , opacity 0.2s;
   }
@@ -129,7 +133,7 @@
   .cart-drawer-box {
     width: 480px;
     background: black;
-    border-radius: 12px;
+    /* border-radius: 12px; */
     flex: 1;
     margin-left: auto;
     display: flex;
@@ -196,8 +200,8 @@
     display: flex;
     align-items: center;
     border: 1px solid #e7e7e7;
-    border-radius: 12px;
-    background: white;
+    /* border-radius: 12px; */
+    background: transparent;
     overflow: hidden;
   }
 
@@ -236,11 +240,11 @@
   }
 
   .cart-drawer-item-main-flex-left h3 a {
-    color: #212529;
+    color: white;
   }
 
   .cart-drawer-item-main-flex-left span {
-    color: #a1a1a1;
+    color: white;
     font-size: 13px;
     margin-top: 4px;
     display: block;
@@ -248,14 +252,15 @@
 
   .cart-drawer-item-main-flex-right span {
     font-weight: 500;
-    color: #212529;
+    color: white;
     font-size: 14px;
   }
 
   .cart-drawer-quantity-selector {
     display: inline-flex;
     border: 1px solid #e7e7e7;
-    border-radius: 4px;
+    /* border-radius: 4px; */
+    align-items: center;
     margin-top: 10px;
   }
 
@@ -267,6 +272,9 @@
     justify-content: center;
     cursor: pointer;
     user-select: none;
+    &:hover{
+      background-color: red;
+    }
   }
 
   .cart-drawer-quantity-selector input {
@@ -274,8 +282,9 @@
     font-size: 13px;
     text-align: center;
     line-height: 24px;
-    border-left: 1px solid #e7e7e7;
-    border-right: 1px solid #e7e7e7;
+    background-color: transparent;
+    /* border-left: 1px solid #e7e7e7;
+    border-right: 1px solid #e7e7e7; */
   }
 
   .cart-drawer-footer {
@@ -297,25 +306,26 @@
 
   .cart-drawer-footer-row h3 {
     font-weight: 400;
-    color: #525252;
+    color: white;
     font-size: 14px;
   }
 
   .cart-drawer-footer-row span {
     font-weight: 500;
-    color: #212529;
+    color: white;
     font-size: 14px;
   }
 
   .cart-drawer-button {
     display: block;
     width: 100%;
+    font-family:var(--bodyFontMedium) ;
     font-weight: 500;
-    background-color: #212529;
+    background-color: red;
     color: #fff;
     line-height: 46px;
     font-size: 16px;
-    border-radius: 6px;
+    /* border-radius: 6px; */
   }
 
   .cart-drawer-empty {

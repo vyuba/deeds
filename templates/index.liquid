@@ -23,12 +23,12 @@
             </div>
         </a>
         </div>
-        <div class="stock-ticker items-center  md:hidden bg-black text-red-500  overflow-hidden select-none flex gap-[var(--gap)] py-1 border-y border-white ">
+        <div class="stock-ticker items-center sticky top-0  md:hidden bg-black text-red-500  overflow-hidden select-none flex gap-[var(--gap)] py-1 border-y border-white ">
             {% render 'infinite-scroll' %}
         </div>
         
     </div>
-        <div class="relative md:w-1/2 h-[784px]   md:h-full md:border-l border-white bg-black">
+        <div class="relative md:w-1/2 h-screen   md:h-full md:border-l border-white bg-black">
         <a  href="{{ routes.all_products_collection_url}}">
             <img src="{{ '415990198_18300274213181708_2894705610518394442_n.jpg' | asset_url }}" class="absolute inset-0 w-full h-full md:h-full object-cover" height="" width="" alt="Background Image" />
             <div class="flex items-end justify-center h-full pb-9 md:pb-4" >
