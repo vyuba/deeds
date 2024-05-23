@@ -1,12 +1,9 @@
-@font-face {
-  font-family: 'Futura';
+/* @font-face {
+    font-family: 'Futura';
+    src: url("{{ '[Futura Light.ttf]' | asset_url}}") format("[]");
+} */
 
-  src: url('{{ "Futura Light.ttf" | asset_url }}') format('truetype');
-}
-
-/*
-! tailwindcss v3.4.3 | MIT License | https://tailwindcss.com
-*/
+/* ! tailwindcss v3.4.3 | MIT License | https://tailwindcss.com */
 
 /*
 1. Prevent padding and border from affecting element width. (https://github.com/mozdevs/cssremedy/issues/4)
@@ -737,10 +734,6 @@ video {
 
 .m-5 {
   margin: 1.25rem;
-}
-
-.m-auto {
-  margin: auto;
 }
 
 .-my-2 {
@@ -1654,11 +1647,6 @@ video {
   padding-bottom: 1.5rem;
 }
 
-.py-7 {
-  padding-top: 1.75rem;
-  padding-bottom: 1.75rem;
-}
-
 .pb-0 {
   padding-bottom: 0px;
 }
@@ -1769,10 +1757,6 @@ video {
 
 .align-middle {
   vertical-align: middle;
-}
-
-.font-futura {
-  font-family: Futura, sans-serif;
 }
 
 .font-mono {
@@ -2057,9 +2041,9 @@ video {
   Variables
 */
 
-body {
-  font-family: Futura, sans-serif;
-}
+/* body {
+    @apply font-futura;
+} */
 
 :root {
   --font: Arial, sans-serif;
@@ -2097,9 +2081,9 @@ body {
 
 body {
   font-size: 16px;
-  font-weight: 400;
+  font-weight: var(--bodyFontWeight);
   line-height: 1.65;
-  font-family: var(--font);
+  font-family: var(--bodyFont);
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

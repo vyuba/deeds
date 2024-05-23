@@ -20,5 +20,12 @@
   <body class="bg-black" >
     {% section 'header' %}
       {{ content_for_layout }}
+    <style>
+      {{ settings.body_font | font_face }}
+      :root{
+        --bodyFont: "{{ settings.body_font.family }}";
+        --bodyFontWeight: {{ settings.body_font.weight }}
+      }
+    </style>
   </body>
 </html>

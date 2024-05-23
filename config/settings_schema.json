@@ -6,5 +6,44 @@
     "theme_author": "Shopify",
     "theme_documentation_url": "https://github.com/Shopify/themekit",
     "theme_support_url": "https://github.com/Shopify/themekit/issues"
+  },
+  {
+    "name": "Typography",
+    "settings": [
+      {
+        "type": "font_picker",
+        "id": "body_font",
+        "label": "body font",
+        "default":"futura_n5"
+      }
+    ]
+  },
+  {
+    "name": "Colors",
+    "settings": [
+      {
+        "type": "color",
+        "id": "bg",
+        "label": "Background color",
+        "default": "#ffffff"
+      },
+      {
+        "type": "color",
+        "id": "text_color",
+        "label": "Text color",
+        "default": "#000000"
+      }
+    ]
+  },
+  {
+    "name": "Settings",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "show_search",
+        "label": "Show search form?",
+        "default": true
+      }
+    ]
   }
 ]
