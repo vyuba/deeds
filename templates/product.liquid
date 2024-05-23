@@ -124,7 +124,7 @@
         {% endif %}
 
         <div class="main-product-option">
-          <label for="quantity">Quantity</label>
+          <label class="text-white" for="quantity">Quantity</label>
           <div>
             <div class="quantity-selector">
               <button type="button" class="quantity-selector-minus">
@@ -143,11 +143,11 @@
           </div>
         </div>
 
-        <button
+        <button 
           {% unless product.selected_or_first_available_variant.available %}
             disabled
           {% endunless %}
-          class="button full main-product-add-to-cart"
+          class="button full main-product-add-to-cart font-futura"
           type="submit"
           class="main-product-add"
         >
