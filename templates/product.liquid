@@ -41,7 +41,7 @@
 
 <div id="main-product--{{ section.id }}" class="main-product">
   <div class="width flex-col md:flex-row">
-    <div class="main-product-left">
+    <div class="main-product-left md:hidden">
       {% if product.selected_or_first_available_variant.featured_image %}
         {% assign featured = product.selected_or_first_available_variant.featured_image %}
         <img class="main-product-image" id="product-image" src="{{ featured | image_url }}">
@@ -55,6 +55,20 @@
           <li class="{% if image == featured %}selected{% endif %}"><img src="{{ image | image_url: master }}"></li>
         {% endfor %}
       </ul>
+    </div>
+
+    <div class=" md:grid grid-rows-1 hidden md:grid-cols-1 lg:grid-cols-2 gap-4 ml-4">
+      <img class="hidden md:block" src="{{ featured_image | img_url: 'large' }}" alt="{{ featured_image.alt | escape }}" height="" width="" id="ProductPhotoImg">
+       {% for image in product.images %}
+        {% comment %} {% render 'product-swipper',   %} {% endcomment %}
+      {% endfor %} 
+  
+        {% for image in product.images %}   
+            <a class="hidden md:block " href="{{ image.src | img_url: 'large' }}">
+              <img class="" src="{{ image.src | img_url: 'large' }}" alt="{{ image.alt | escape }}" height="" width="">
+            </a>
+        {% endfor %}
+  
     </div>
 
     <div class="main-product-right md:ml-10 ml-0 pt-5 md:pt-0">

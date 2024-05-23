@@ -1,5 +1,5 @@
 <div class="cart-drawer">
-  <div class="cart-drawer-box">
+  <div class="cart-drawer-box w-screen md:w-[28rem] ">
     {% comment %} Header section {% endcomment %}
     <header class="cart-drawer-header">
       <h2>{% render 'icon-shopping-bag' %}</h2>
@@ -58,14 +58,17 @@
                     <span>{{ item.variant.title }}</span>
                     <div class="cart-drawer-quantity-selector">
                       <button class="cart-drawer-quantity-selector-minus" type="button">
-                        {% render 'icon-minus' %}
+                        -
                       </button>
                       <input
                         class="text-white"
                         type="text"
                         readonly
                         value="'{{ item.quantity }}'">
-                      <button class="cart-drawer-quantity-selector-plus" type="button">{% render 'icon-plus' %}</button>
+                      <button class="cart-drawer-quantity-selector-plus"
+                       type="button">
+                       +
+                      </button>
                     </div>
                   </div>
                   <div>
@@ -131,7 +134,6 @@
   }
 
   .cart-drawer-box {
-    width: 480px;
     background: black;
     /* border-radius: 12px; */
     flex: 1;
@@ -153,13 +155,14 @@
   .cart-drawer-header {
     display: flex;
     align-items: center;
+    justify-content: space-between;
     padding: 24px;
     border-bottom: 1px solid #e7e7e7;
   }
 
   .cart-drawer-header h2 {
     color: white;
-    flex: 1;
+    /* flex: 1; */
     font-weight: 500;
     font-size: 18px;
   }
@@ -259,32 +262,28 @@
   .cart-drawer-quantity-selector {
     display: inline-flex;
     border: 1px solid #e7e7e7;
-    /* border-radius: 4px; */
+    border-radius: 4px;
     align-items: center;
     margin-top: 10px;
   }
 
   .cart-drawer-quantity-selector button {
     width: 28px;
-    height: 24px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    user-select: none;
-    &:hover{
-      background-color: red;
-    }
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  user-select: none;
   }
 
   .cart-drawer-quantity-selector input {
     width: 28px;
-    font-size: 13px;
-    text-align: center;
-    line-height: 24px;
-    background-color: transparent;
-    /* border-left: 1px solid #e7e7e7;
-    border-right: 1px solid #e7e7e7; */
+  font-size: 13px;
+  text-align: center;
+  line-height: 24px;
+  border-left: 1px solid #e7e7e7;
+  border-right: 1px solid #e7e7e7;
   }
 
   .cart-drawer-footer {
@@ -321,6 +320,7 @@
     width: 100%;
     font-family:var(--bodyFontMedium) ;
     font-weight: 500;
+    padding-inline: 100px;
     background-color: red;
     color: #fff;
     line-height: 46px;
@@ -333,3 +333,120 @@
     color: #212529;
   }
 </style>
+
+<script>
+  // Put your application javascript here
+function openCartDrawer() {
+    document.querySelector(".cart-drawer").classList.add("cart-drawer--active");
+  }
+  
+  function closeCartDrawer() {
+    document
+      .querySelector(".cart-drawer")
+      .classList.remove("cart-drawer--active");
+  }
+  
+  function updateCartItemCounts(count) {
+    document.querySelectorAll(".cart-count").forEach((el) => {
+      el.textContent = count;
+    });
+  }
+  
+  async function updateCartDrawer() {
+    const res = await fetch("/?section_id=cart-drawer");
+    const text = await res.text();
+    const html = document.createElement("div");
+    html.innerHTML = text;
+  
+    const newBox = html.querySelector(".cart-drawer").innerHTML;
+  
+    document.querySelector(".cart-drawer").innerHTML = newBox;
+  
+    addCartDrawerListeners();
+  }
+  
+  function addCartDrawerListeners() {
+    // Update quantities
+    document
+      .querySelectorAll(".cart-drawer-quantity-selector  button")
+      .forEach((button) => {
+        button.addEventListener("click", async () => {
+          // Get line item key
+          const rootItem =
+            button.parentElement.parentElement.parentElement.parentElement
+              .parentElement;
+          const key = rootItem.getAttribute("data-line-item-key");
+  
+          // Get new quantity
+          const currentQuantity = Number(
+            button.parentElement.querySelector("input").value
+          );
+          const isUp = button.classList.contains(
+            "cart-drawer-quantity-selector-plus"
+          );
+          const newQuantity = isUp ? currentQuantity + 1 : currentQuantity - 1;
+  
+          // Ajax update\
+          const res = await fetch("/cart/update.js", {
+            method: "post",
+            headers: {
+              Accept: "application/json",
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ updates: { [key]: newQuantity } }),
+          });
+          const cart = await res.json();
+  
+          updateCartItemCounts(cart.item_count);
+  
+          // Update cart
+          updateCartDrawer();
+        });
+      });
+  
+    document.querySelector(".cart-drawer-box").addEventListener("click", (e) => {
+      e.stopPropagation();
+    });
+  
+    document
+      .querySelectorAll(".cart-drawer-header-right-close, .cart-drawer")
+      .forEach((el) => {
+        el.addEventListener("click", () => {
+          console.log("closing drawer");
+          closeCartDrawer();
+        });
+      });
+  }
+  
+  addCartDrawerListeners();
+  
+  document.querySelectorAll('form[action="/cart/add"]').forEach((form) => {
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+  
+      // Submit form with ajax
+      await fetch("/cart/add", {
+        method: "post",
+        body: new FormData(form),
+      });
+  
+      // Get cart count
+      const res = await fetch("/cart.js");
+      const cart = await res.json();
+      updateCartItemCounts(cart.item_count);
+  
+      // Update cart
+      await updateCartDrawer();
+  
+      // Open cart drawer
+      openCartDrawer();
+    });
+  });
+  
+  document.querySelectorAll('a[href="/cart"]').forEach((a) => {
+    a.addEventListener("click", (e) => {
+      e.preventDefault();
+      openCartDrawer();
+    });
+  });
+</script>
