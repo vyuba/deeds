@@ -58,7 +58,7 @@
     </div>
 
     <div class=" md:grid grid-rows-1 hidden md:grid-cols-1 lg:grid-cols-2 gap-4 ml-4">
-      <img class="hidden md:block" src="{{ featured image | img_url: 'large' }}" alt="{{ featured image.alt | escape }}" height="" width="" id="ProductPhotoImg">
+      {% comment %} <img class="hidden md:block" src="{{ featured image | img_url: 'large' }}" alt="{{ featured image.alt | escape }}" height="" width="" id="ProductPhotoImg"> {% endcomment %}
        {% for image in product.images %}
         {% comment %} {% render 'product-swipper',   %} {% endcomment %}
       {% endfor %} 
