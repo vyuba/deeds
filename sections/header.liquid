@@ -116,7 +116,7 @@
     </ul>
   </nav>
 
-  {% comment %} <div
+{% comment %} <div
     id="cart-navigation"
     :class="{ 'visible': openCart, 'invisible': !openCart }"
     x-cloak
@@ -128,7 +128,9 @@
       :class="openCart ? 'translate-x-0' : 'translate-x-full'"
     >
       <div class="flex justify-between my-2 mx-5 items-center border-b border-white">
-        {% render 'icon-shopping-bag' %}
+        <h2 class="flex gap-1">{% render 'icon-shopping-bag' %}
+        <span class="cart-drawer-header-right-items">{{ cart.item_count }} items</span>  
+      </h2>
         <button
           @click="openCart = !openCart"
           type="button"
@@ -137,7 +139,7 @@
           {% render 'icon-close-button' %}
         </button>
       </div>
-      
-    </div>
-  </div> {% endcomment %}
+
+  </div>
+</div>  {% endcomment %}
 </div>

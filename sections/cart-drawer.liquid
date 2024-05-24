@@ -59,8 +59,8 @@
                       <a href="{{ item.url }}">{{ item.product.title }}</a>
                     </h3>
                     <span>{{ item.variant.title }}</span>
-                      <div class="box flex items-center justify-center gap-2">
-                      <div class="cart-drawer-quantity-selector">
+                      <div class="box">
+                      <div class="cart-drawer-quantity-selector grid grid-cols-3">
                         <button class="selectorbutton cart-drawer-quantity-selector-minus" type="button">
                           {% render 'icon-minus' %}
                         </button>
@@ -107,50 +107,43 @@
   .cart-drawer {
     position: fixed;
     top: 0;
-    left: -9999px;
-    opacity: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.7);
-    z-index: 99999;
-    display: flex;
-    flex-direction: column;
-    /* padding: 24px; */
-    transition: left 0s 0.2s
-    , opacity 0.2s;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    backdrop-filter: blur(5px);
+    z-index: 1000000;
+    display: none; /* Initially hidden */
   }
 
   .cart-drawer--active {
-    left: 0;
-    opacity: 1;
-    transition: left 0s
-    , opacity 0.2s;
+    display: block; /* Visible when toggled */
   }
 
   .cart-drawer-box {
-    background: black;
-    /* border-radius: 12px; */
-    flex: 1;
-    margin-left: auto;
-    display: flex;
-    flex-direction: column;
-    overflow: auto;
-    transition: 0.2s opacity
-    , 0.2s transform;
-    opacity: 0;
-    transform: translateX(40px);
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 100vw; /* Full viewport width */
+    max-width: 28rem; /* Maximum width for medium and larger screens */
+    padding-bottom: 1rem; /* Padding bottom */
+    background-color: black;
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+    z-index: 10;
+    transition: transform 0.3s ease; /* Smooth transition */
+    transform: translateX(100%);
   }
 
   .cart-drawer--active .cart-drawer-box {
-    transform: none;
-    opacity: 1;
+    transform: translateX(0); 
   }
 
   .cart-drawer-header {
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 24px;
+    padding: 10px;
     border-bottom: 1px solid #e7e7e7;
   }
 
@@ -165,12 +158,12 @@
     color: #a1a1a1;
     display: inline-flex;
     align-items: center;
-    gap: 20px;
+    margin-right: 25px;
   }
 
   .cart-drawer-header-right-items {
-    display: block;
-    font-weight: 500;
+    /* display: block;
+    font-weight: 500; */
   }
 
   .cart-drawer-header-right-close {
@@ -194,9 +187,13 @@
   }
 
   .cart-drawer-item {
+    /* padding-block: 20px; */
+    width: 100%;
     display: flex;
+    flex-direction: row-reverse;
     align-items: center;
-    border: 1px solid #e7e7e7;
+    justify-content: space-between;
+    /* border: 1px solid #e7e7e7; */
     /* border-radius: 12px; */
     background: transparent;
     overflow: hidden;
@@ -207,18 +204,19 @@
   }
 
   .cart-drawer-item-image {
+    margin-right: 4px;
     width: 120px;
+    height: 100%;
   }
 
   .cart-drawer-item-image img {
-    width: 120px;
-    height: 120px;
+    width: 100%;
+    height: auto;
     object-fit: cover;
   }
 
   .cart-drawer-item-main {
-    flex: 1;
-    padding: 0 24px;
+    /* padding: 0 24px; */
   }
 
   .cart-drawer-item-main-flex {
@@ -228,7 +226,7 @@
   }
 
   .cart-drawer-item-main-flex-left {
-    flex: 1;
+    /* flex: 1; */
   }
 
   .cart-drawer-item-main-flex-left h3 {
@@ -252,45 +250,68 @@
     color: white;
     font-size: 14px;
   }
+    .box{
+      margin-top: 10px;
+      display: flex;
+      flex-direction: row;
+      background-color: white;
+      justify-content: space-between;
+      /* width: 100%; */
+      width: 170px;
+      /* gap: 10px; */
+      height: 40px;
+    }
 
+    .deleteBtn{
+      width: 140px;
+      height: 100%;
+     display: grid ;
+     place-items: center;
+     padding-inline: 4px;
+    &:hover{
+      background-color: red;
+    }
+    }
   .cart-drawer-quantity-selector {
-    display: inline-flex;
-    border: 1px solid #e7e7e7;
-    border-radius: 4px;
-    align-items: center;
-    margin-top: 10px;
+    background-color: yellow;
   }
 
   .cart-drawer-quantity-selector button {
-    width: 28px;
-  height: 24px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  user-select: none;
+    height: full;
+    display: grid;
+    place-items: center;
+    &:hover{
+      background-color: red;
+    }
   }
 
   .cart-drawer-quantity-selector input {
-    width: 28px;
-  font-size: 13px;
-  text-align: center;
-  line-height: 24px;
-  border-left: 1px solid #e7e7e7;
-  border-right: 1px solid #e7e7e7;
+    display: grid;
+    place-self: center;
+    padding-inline: 2px;
+    &:hover{
+      background-color: red;
+    }
+    text-align: center;
   }
 
   .cart-drawer-footer {
-    padding: 10px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    /* padding: 10px; */
     margin-top: auto;
     border-top: 1px solid #e7e7e7;
+    background-color: black;
+    z-index: 100;
   }
 
   .cart-drawer-footer-row {
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 10px;
+    /* margin-bottom: 10px; */
   }
 
   .cart-drawer-footer-row:last-of-type {
