@@ -1,6 +1,6 @@
 <div class="pt-14 text-white">
   {% paginate search.results by 10 %}
-    <form class="px-4" action="/search" method="get" role="search">
+    <form class="px-4 py-4" action="/search" method="get" role="search">
       {% comment %} <input class="border-2 border-white bg-white" type="search" name="q" value="{{ search.terms | escape }}"> {% endcomment %}
       <header
         class="chakra-modal__header sticky top-0 z-10 flex justify-between bg-white css-f8atus"
@@ -25,47 +25,43 @@
       {% comment %} <button type="submit">{% render 'icon-search' %}</button> {% endcomment %}
     </form>
     {% if search.performed %}
-      <div>
-        <div class=" px-4 grid grid-cols-2 lg:grid-cols-4">
-        {% for item in search.results %}
-            <div class="w-fit flex flex-col gap-3">
-              {% if item.featured_image %}
-                <a href="{{ item.url | within: collection }}" title="{{ item.title | escape }}">
-                  {{ item.featured_image.src | img_url: 'medium' | img_tag: item.featured_image.alt }}
-                </a>
-              {% endif %}
-              <h5>{{ item.title | link_to: item.url }}</h5>
-              {% comment %} <p>{{ item.content | strip_html | truncatewords: 50 }}</p> {% endcomment %}
-            </div>
-            {% else %}
-            <div class="w-full h-full flex items-center justify-center text-white">
-              <div class="flex flex-col items-center justify-center w-full h-full">
-                <div class="text-5xl md:text-9xl text-white font-bold my-4">404</div>
-                <img
-                src="{{ "032c-baby.gif"| asset_url }}"
-                height=""
-                width=""
-                alt=""
-                >
-                <div class="my-4">
-                  <p class="text-base md:text-xl leading-normal">{{ section.settings.subtext_title | capitalize }}</p>
-                  {% if section.settings.button_url == null %}
-                    {% assign shop_url = shop.secure_url %}
-                    {% else %}
-                    {% assign shop_url = section.settings.button_url %}
-                  {% endif %}
-                  <a
-                  class="underline capitalize underline-offset-2 decoration-dotted font-bold hover:text-red-500  "
-                  href="{{ shop_url }}"
-                  >
-                  go back to home page→</a
-                  >
-                  </div>
-                  </div>
-                  </div>
-                {% endfor %}
-                </div>
-      </div>
+      {% if search.results.size > 0 %}
+        <div class="max-w-6xl mx-auto  ">
+          <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 place-items-center gap-4">
+            {% for item in search.results  %}
+              {% case item.object_type  %}
+                {% when 'product' %}
+                  {% render 'product-card', product:item %}
+                  
+                {% else %}
+                  
+              {% endcase %}
+            {% endfor %}
+          </div>
+        </div>
+        {% else %}
+        <div class="w-full h-full flex items-center justify-center text-white">
+          <div class="flex flex-col items-center justify-center w-full h-full">
+            <div class="text-xl md:text-2xl text-white capitalize font-bold my-4">product not found</div>
+            <img
+            src="{{ "032c-baby.gif"| asset_url }}"
+            height=""
+            width=""
+            alt=""
+            >
+            <div class="my-4">
+              <p class="text-base md:text-xl leading-normal"></p>
+                {% assign shop_url = shop.secure_url %}
+              <a
+              class="underline capitalize underline-offset-2 decoration-dotted font-bold hover:text-red-500  "
+              href="{{ shop_url }}"
+              >
+              try again→</a
+              >
+              </div>
+              </div>
+              </div>
+      {% endif %}
     {% endif %}
 
     {% if paginate.pages > 1 %}{{ paginate | default_pagination }}{% endif %}

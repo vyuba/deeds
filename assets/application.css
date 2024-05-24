@@ -1134,11 +1134,6 @@ video {
   width: auto;
 }
 
-.w-fit {
-  width: -moz-fit-content;
-  width: fit-content;
-}
-
 .w-full {
   width: 100%;
 }
@@ -1157,6 +1152,10 @@ video {
 
 .max-w-5xl {
   max-width: 64rem;
+}
+
+.max-w-6xl {
+  max-width: 72rem;
 }
 
 .max-w-md {
@@ -1655,6 +1654,11 @@ video {
   padding-bottom: 0.75rem;
 }
 
+.py-4 {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
 .py-6 {
   padding-top: 1.5rem;
   padding-bottom: 1.5rem;
@@ -2086,6 +2090,46 @@ video {
   width: 100%;
 }
 
+@font-face {
+  font-family: 'Futura' ;
+
+  src: var(--bodyFontlight);
+
+  font-weight: 200;
+}
+
+@font-face {
+  font-family: 'Futura' ;
+
+  src: var(--bodyFontRegular);
+
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'Futura' ;
+
+  src: var(--bodyFontMedium);
+
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: 'Futura' ;
+
+  src: var(--bodyFontSemiBold);
+
+  font-weight: 600;
+}
+
+@font-face {
+  font-family: 'Futura' ;
+
+  src: var(--bodyFontBold);
+
+  font-weight: 700;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -2103,7 +2147,7 @@ video {
 body {
   font-size: 16px;
   line-height: 1.65;
-  font-family: var(--bodyFont);
+  font-family: Futura;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -2879,6 +2923,10 @@ select {
     grid-template-columns: repeat(1, minmax(0, 1fr));
   }
 
+  .md\:grid-cols-3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
   .md\:flex-row {
     flex-direction: row;
   }
@@ -2903,8 +2951,9 @@ select {
     padding-top: 0px;
   }
 
-  .md\:pt-16 {
-    padding-top: 4rem;
+  .md\:text-2xl {
+    font-size: 1.5rem;
+    line-height: 2rem;
   }
 
   .md\:text-9xl {

@@ -27,28 +27,63 @@ async function updateCartDrawer() {
   addCartDrawerListeners();
 }
 
+// function deleteCartDrawerListener() {
+//   const deleteBtn = document.querySelectorAll(".deleteBtn")
+//   deleteBtn.forEach((button)=> {
+//     button.addEventListener("click", async () => {
+//       // Get line item key
+//       const rootItem =
+//       button.parentElement.parentElement.parentElement.parentElement
+//         .parentElement;
+//     const key = rootItem.getAttribute("data-line-item-key");
+
+//     // Get new quantity
+//     const currentQuantity = Number(
+//       button.parentElement.querySelector(".input").value
+//     );
+//     console.log(currentQuantity)
+//     const isUp = button.classList.contains(
+//       "cart-drawer-quantity-selector-plus"
+//     );
+//     const newQuantity = isUp ? currentQuantity + 1 : currentQuantity - 1;
+//       // Ajax delete
+//       const res = await fetch("/cart/clear.js", {
+//         method: "post",
+//         headers: {
+//           Accept: "application/json",
+//           "Content-Type": "application/json",
+//         },
+//         body: JSON.stringify({ updates: { [key]: newQuantity } }),
+//       });
+//       console.log(res.json())
+//       updateCartDrawer()
+//     })
+//   })
+//   console.log(deleteBtn)
+// }
+// deleteCartDrawerListener()
+
 function addCartDrawerListeners() {
   // Update quantities
   document
-    .querySelectorAll(".cart-drawer-quantity-selector button")
+    .querySelectorAll(".box .selectorbutton")
     .forEach((button) => {
       button.addEventListener("click", async () => {
         // Get line item key
         const rootItem =
           button.parentElement.parentElement.parentElement.parentElement
-            .parentElement;
+            .parentElement.parentElement;
         const key = rootItem.getAttribute("data-line-item-key");
 
         // Get new quantity
         const currentQuantity = Number(
           button.parentElement.querySelector(".input").value
         );
-        console.log(currentQuantity)
         const isUp = button.classList.contains(
           "cart-drawer-quantity-selector-plus"
         );
         const newQuantity = isUp ? currentQuantity + 1 : currentQuantity - 1;
-
+        
         // Ajax update\
         const res = await fetch("/cart/update.js", {
           method: "post",
@@ -59,9 +94,10 @@ function addCartDrawerListeners() {
           body: JSON.stringify({ updates: { [key]: newQuantity } }),
         });
         const cart = await res.json();
-
+        
         updateCartItemCounts(cart.item_count);
-
+        
+        console.log(key)
         // Update cart
         updateCartDrawer();
       });
