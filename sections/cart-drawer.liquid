@@ -92,10 +92,10 @@
             <h3>Shipping calculated at checkout</h3>
             {% comment %} <span>{{ cart.total_price | money }}</span> {% endcomment %}
           </div>
-          <div class="cart-drawer-checkout bg-red-500 text-black">
-            <button class="" type="submit" name="checkout" class="cart-drawer-button font-bold capitalize"><p>Checkout</p></button>
+          <button type="submit" name="checkout" class="cart-drawer-checkout cart-drawer-button bg-red-500 text-black">
+            <div class="" type="submit" name="checkout" class="cart-drawer-button font-bold capitalize">Checkout</div>
             <span class="text-black  bold">{{ cart.total_price | money }}</span>
-          </div>
+          </button>
           {% comment %} <button class="flex w-full" type="submit" name="checkout" class="cart-drawer-button">Checkout</button> {% endcomment %}
         </footer>
       {% endif %}
@@ -254,7 +254,7 @@
       margin-top: 10px;
       display: flex;
       flex-direction: row;
-      background-color: white;
+      /* background-color: white; */
       justify-content: space-between;
       /* width: 100%; */
       width: 170px;
@@ -266,6 +266,7 @@
       width: 140px;
       height: 100%;
      display: grid ;
+     color: white;
      place-items: center;
      padding-inline: 4px;
     &:hover{
@@ -273,7 +274,7 @@
     }
     }
   .cart-drawer-quantity-selector {
-    background-color: yellow;
+    background-color: white;
   }
 
   .cart-drawer-quantity-selector button {
@@ -289,9 +290,10 @@
     display: grid;
     place-self: center;
     padding-inline: 2px;
-    &:hover{
+    color: black;
+    /* &:hover{
       background-color: red;
-    }
+    } */
     text-align: center;
   }
 
@@ -330,6 +332,7 @@
     font-size: 14px;
   }
   .cart-drawer-checkout {
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -341,7 +344,7 @@
   }
 
   .cart-drawer-button {
-    display: block;
+    /* display: block;
     width: 100%;
     font-family: Futura ;
     font-weight: 700;
@@ -349,7 +352,7 @@
     background-color: red;
     color: #fff;
     line-height: 46px;
-    font-size: 16px;
+    font-size: 16px; */
     /* border-radius: 6px; */
   }
 
