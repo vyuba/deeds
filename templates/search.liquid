@@ -1,22 +1,73 @@
-{% paginate search.results by 10 %}
-  <form action="/search" method="get" role="search">
-    <input type="search" name="q" value="{{ search.terms | escape }}">
-    <button type="submit">search</button>
-  </form>
+<div class="pt-14 text-white">
+  {% paginate search.results by 10 %}
+    <form class="px-4" action="/search" method="get" role="search">
+      {% comment %} <input class="border-2 border-white bg-white" type="search" name="q" value="{{ search.terms | escape }}"> {% endcomment %}
+      <header
+        class="chakra-modal__header sticky top-0 z-10 flex justify-between bg-white css-f8atus"
+        id="chakra-modal--header-3"
+      >
+        <input
+          name="q"
+          type="search"
+          autocomplete="off"
+          class="chakra-input form-control w-full text-md border-none h-block pl-4 bg-white text-black placeholder:text-black placeholder:text-opacity-50 font-normal css-qon9cs"
+          placeholder="Search magazine and store"
+          value="{{ search.terms | escape }}"
+        >
+        <div class="block md:hidden bg-white">
+          <button type="button" class="chakra-button css-1ax86fp" aria-label="Close Search">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M21.064 2.9375L2.93701 21.0625" stroke="black" stroke-miterlimit="10"></path><path d="M21.062 21.0625L2.936 2.9375" stroke="black" stroke-miterlimit="10"></path>
+            </svg>
+          </button>
+        </div>
+      </header>
+      {% comment %} <button type="submit">{% render 'icon-search' %}</button> {% endcomment %}
+    </form>
+    {% if search.performed %}
+      <div>
+        <div class=" px-4 grid grid-cols-2 lg:grid-cols-4">
+        {% for item in search.results %}
+            <div class="w-fit flex flex-col gap-3">
+              {% if item.featured_image %}
+                <a href="{{ item.url | within: collection }}" title="{{ item.title | escape }}">
+                  {{ item.featured_image.src | img_url: 'medium' | img_tag: item.featured_image.alt }}
+                </a>
+              {% endif %}
+              <h5>{{ item.title | link_to: item.url }}</h5>
+              {% comment %} <p>{{ item.content | strip_html | truncatewords: 50 }}</p> {% endcomment %}
+            </div>
+            {% else %}
+            <div class="w-full h-full flex items-center justify-center text-white">
+              <div class="flex flex-col items-center justify-center w-full h-full">
+                <div class="text-5xl md:text-9xl text-white font-bold my-4">404</div>
+                <img
+                src="{{ "032c-baby.gif"| asset_url }}"
+                height=""
+                width=""
+                alt=""
+                >
+                <div class="my-4">
+                  <p class="text-base md:text-xl leading-normal">{{ section.settings.subtext_title | capitalize }}</p>
+                  {% if section.settings.button_url == null %}
+                    {% assign shop_url = shop.secure_url %}
+                    {% else %}
+                    {% assign shop_url = section.settings.button_url %}
+                  {% endif %}
+                  <a
+                  class="underline capitalize underline-offset-2 decoration-dotted font-bold hover:text-red-500  "
+                  href="{{ shop_url }}"
+                  >
+                  go back to home page→</a
+                  >
+                  </div>
+                  </div>
+                  </div>
+                {% endfor %}
+                </div>
+      </div>
+    {% endif %}
 
-  {% if search.performed %}
-    {% for item in search.results %}
-      {% if item.featured_image %}
-        <a href="{{ item.url | within: collection }}" title="{{ item.title | escape }}">
-          {{ item.featured_image.src | img_url: 'medium' | img_tag: item.featured_image.alt }}
-        </a>
-      {% endif %}
-      <h5>{{ item.title | link_to: item.url }}</h5>
-      <p>{{ item.content | strip_html | truncatewords: 50 }}</p>
-    {% else %}
-      no results
-    {% endfor %}
-  {% endif %}
-
-  {% if paginate.pages > 1 %}{{ paginate | default_pagination }}{% endif %}
-{% endpaginate %}
+    {% if paginate.pages > 1 %}{{ paginate | default_pagination }}{% endif %}
+  {% endpaginate %}
+</div>
