@@ -89,9 +89,9 @@
             <h3>Shipping calculated at checkout</h3>
             {% comment %} <span>{{ cart.total_price | money }}</span> {% endcomment %}
           </div>
-          <button type="submit" name="checkout" class="cart-drawer-checkout cart-drawer-button bg-red-600 text-white text-lg">
+          <button type="submit" name="checkout" class="cart-drawer-checkout cart-drawer-button bg-red-600 text-white text-lg hover:text-red-600 ">
             <div class="" type="submit" name="checkout" class="cart-drawer-button font-bold capitalize">Checkout</div>
-            <span class=" text-white ">{{ cart.total_price | money }}</span>
+            <p class=" ">{{ cart.total_price | money }}</p>
           </button>
           {% comment %} <button class="flex w-full" type="submit" name="checkout" class="cart-drawer-button">Checkout</button> {% endcomment %}
         </footer>

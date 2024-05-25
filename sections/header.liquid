@@ -31,7 +31,7 @@
           {% else %}
             <div class="relative">
               <a
-                class="decoration-dotted underline-offset-2 underline text-base  hover:text-red-500   {% if link.active == true %} text-red-600 {% else %} text-white {% endif %}"
+                class="decoration-dotted underline-offset-2 underline text-base font-semibold  hover:text-red-500   {% if link.active == true %} text-red-600 {% else %} text-white {% endif %}"
                 href="{{ link.url }}"
               >
                 {{ link.title |upcase }}
