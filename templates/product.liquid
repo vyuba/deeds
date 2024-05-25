@@ -72,14 +72,14 @@
     </div>
 
     <div class="main-product-right md:ml-10 ml-0 pt-5 md:pt-0">
-      <h1 class="text-white text-xl capitalize font-medium">{{ product.title }}</h1>
+      <h1 class="text-white text-2xl capitalize font-medium">{{ product.title }}</h1>
 
       <div class="main-product-prices">
-        <p class="main-product-compare {% unless product.selected_or_first_available_variant.compare_at_price > product.selected_or_first_available_variant.price %}hide{% endunless %}">
+        <p class="main-product-compare  {% unless product.selected_or_first_available_variant.compare_at_price > product.selected_or_first_available_variant.price %}hide{% endunless %}">
           {{ product.selected_or_first_available_variant.compare_at_price | money }}
         </p>
 
-        <p class="main-product-price">
+        <p class="main-product-price font-medium">
           {{ product.selected_or_first_available_variant.price | money }}
         </p>
       </div>
@@ -161,7 +161,7 @@
           {% unless product.selected_or_first_available_variant.available %}
             disabled
           {% endunless %}
-          class="button full main-product-add-to-cart medium capitalize"
+          class="button full main-product-add-to-cart text-lg  capitalize"
           type="submit"
           class="main-product-add"
         >
@@ -178,7 +178,13 @@
     </div>
   </div>
 </div>
+<style>
+  .main-product-add-to-cart{
+    font-family: futura;
+    font-weight: 700;
+  }
 
+</style>
 <script>
   
   // Product json

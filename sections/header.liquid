@@ -31,7 +31,7 @@
           {% else %}
             <div class="relative">
               <a
-                class="decoration-dotted underline-offset-2 underline text-base  hover:text-red-500 text-white    {% if link.active == true %} text-red-600  {% endif %}"
+                class="decoration-dotted underline-offset-2 underline text-base  hover:text-red-500   {% if link.active == true %} text-red-600 {% else %} text-white {% endif %}"
                 href="{{ link.url }}"
               >
                 {{ link.title |upcase }}
@@ -41,7 +41,7 @@
         {% endfor %}
       </nav>
       <!-- STORE NAME / STORE LOGO -->
-      <div class="flex items-center  justify-center truncate">
+      <div class="flex items-center lg:pr-32   justify-center truncate">
         <h1 class="text-xl font-bold truncate">
           <a href="{{ routes.root_url  }}" class="block">
             <img height="" width="" src="{{ 'deeds.png' | asset_url }}" alt="Default Logo Image" class="w-20 ">
