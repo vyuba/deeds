@@ -44,15 +44,15 @@
     <div class="main-product-left md:hidden">
       {% if product.selected_or_first_available_variant.featured_image %}
         {% assign featured = product.selected_or_first_available_variant.featured_image %}
-        <img class="main-product-image" id="product-image" src="{{ featured | image_url }}">
+        <img height="" width="" class="main-product-image" id="product-image" src="{{ featured | image_url }}">
       {% else %}
         {% assign featured = product.featured_image %}
-        <img class="main-product-image" id="product-image" src="{{ featured | image_url }}">
+        <img height="" width="" class="main-product-image" id="product-image" src="{{ featured | image_url }}">
       {% endif %}
 
       <ul class="main-product-image-thumbs">
         {% for image in product.images %}
-          <li class="{% if image == featured %}selected{% endif %}"><img src="{{ image | image_url: master }}" ></li>
+          <li class="{% if image == featured %}selected{% endif %}"><img height="" width="" src="{{ image | image_url: master }}" ></li>
         {% endfor %}
       </ul>
     </div>

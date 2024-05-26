@@ -50,9 +50,11 @@
       </div>
 
       <div class="flex items-center gap-4  justify-end">
-        <a class="" href="{{ routes.search_url }}" class="text-base text-gray-500 hover:text-gray-900">
+      {% if template != 'index' %}  
+        <a class="" href="{{ routes.search_url }}" class="text-base text-gray-500 hover:text-gray-900" >
           {% render 'icon-search' -%}
         </a>
+      {% endif %}
         <div class="flex">
           <a @click="openCart = !openCart" onclick="openCartDrawer()" class="whitespace-nowrap text-base text-gray-500 hover:text-gray-900">
             <svg class="w-6 h-6">

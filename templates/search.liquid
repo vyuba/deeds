@@ -1,9 +1,9 @@
-<div class="pt-14 text-white">
+<div class="pt-14 text-white  w-full">
   {% paginate search.results by 10 %}
-    <form class="px-4 py-4" action="/search" method="get" role="search">
+    <form class="px-4 py-4 w-screen " action="/search" method="get" role="search">
       {% comment %} <input class="border-2 border-white bg-white" type="search" name="q" value="{{ search.terms | escape }}"> {% endcomment %}
       <header
-        class="chakra-modal__header sticky top-0 z-10 flex justify-between bg-white css-f8atus"
+        class="py-1 pr-2 justify-self-center   sticky top-0 z-10 flex justify-between items-center bg-white"
         id="chakra-modal--header-3"
       >
         <input
@@ -27,12 +27,11 @@
     {% if search.performed %}
       {% if search.results.size > 0 %}
         <div class="max-w-6xl mx-auto  ">
-          <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 place-items-center gap-4">
-            {% for item in search.results  %}
+          <div class="grid  grid-cols-2 lg:grid-cols-4 gap-y-12 gap-x-4 mx-4">
+            {% for item in search.results %}
               {% case item.object_type  %}
                 {% when 'product' %}
                   {% render 'product-card', product:item %}
-                  
                 {% else %}
                   
               {% endcase %}

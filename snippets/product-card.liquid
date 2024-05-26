@@ -1,3 +1,13 @@
+<div class="product-grid-item text-white hover:text-red-600">
+  <a href="{{ product.url }}">
+<img src="{{ product.featured_image | image_url: width: 400 }}" height="" width="">
+
+<span class="product-grid-item-text">
+  <h3>{{ product.title }}</h3>
+  <p class="product-grid-item-price">{{ product.price | money }}</p>
+</span>
+</a>
+</div>
 {% comment %} <div class=" hover:text-red-600 text-white"> 
   <div class="">
     <a href="{{ product.url | within: collection }}">
@@ -11,12 +21,3 @@
     {% unless product.available %}<br><strong>sold out</strong>{% endunless %}
   </div>
 </div> {% endcomment %}
-
-<a class="product-grid-item" href="{{ product.url }}">
-  <img src="{{ product.featured_image | image_url: width: 400 }}">
-
-  <span class="product-grid-item-text">
-    <h3>{{ product.title }}</h3>
-    <p class="product-grid-item-price">{{ product.price | money }}</p>
-  </span>
-</a>
