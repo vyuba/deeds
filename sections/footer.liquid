@@ -1,36 +1,31 @@
 {% if template != 'index' %} 
-<div class="footer">
-  <div class="footer-content">
+<div class="footer mt-20 ">
+  <div class="footer-content bg-black flex flex-row justify-between md:justify-evenly md:gap-7 px-7">
     <!-- Footer navigation -->
-    <div class="footer-nav">
-      <ul>
-        <li><a href="/pages/about-us">About Us</a></li>
-        <li><a href="/pages/contact-us">Contact Us</a></li>
-        <li><a href="/collections/all">Shop</a></li>
-        <li><a href="/pages/privacy-policy">Privacy Policy</a></li>
-        <li><a href="/pages/terms-of-service">Terms of Service</a></li>
-      </ul>
+    <div class="footer-nav flex flex-col justify-between">
+        <a href="{{ routes.root_url  }}" class="block">
+            <img height="" width="" src="{{ 'deeds.png' | asset_url }}" alt="Default Logo Image" class="w-20 ">
+          </a>
+          <p>&copy; {{ "now" | date: "%Y" }} deeds store. All rights reserved.</p>
     </div>
     <!-- Social media links -->
-    <div class="footer-social">
-      <a href="https://facebook.com/yourpage" target="_blank">Facebook</a>
-      <a href="https://twitter.com/yourprofile" target="_blank">Twitter</a>
-      <a href="https://instagram.com/yourprofile" target="_blank">Instagram</a>
+    <div class="footer-social flex flex-col text-white capitalize">
+      <a class="text-white" href="https://facebook.com/yourpage" target="_blank">Facebook</a>
+      <a class="text-white" href="https://twitter.com/yourprofile" target="_blank">Twitter</a>
+      <a class="text-white" href="https://instagram.com/yourprofile" target="_blank">Instagram</a>
     </div>
     <!-- Copyright notice -->
-    <p>&copy; {{ "now" | date: "%Y" }} Your Store Name. All rights reserved.</p>
   </div>
 </div>
 {%endif%}
 {% style %}
     
-    .footer {
-  background-color: #333;
+.footer {
+  background-color: black;
   color: white;
   padding: 20px 0;
-  text-align: center;
 }
-
+/* 
 .footer-nav ul {
   list-style: none;
   padding: 0;
@@ -65,6 +60,6 @@
 
 .footer-social a:hover {
   text-decoration: underline;
-}
+} */
 
 {% endstyle %}

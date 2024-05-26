@@ -14,7 +14,7 @@
         "type": "font_picker",
         "id": "body_font",
         "label": "body font",
-        "default":"futura_n5"
+        "default":"helvetica_n3"
       }
     ]
   },
