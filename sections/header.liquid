@@ -21,7 +21,52 @@
       </div>
       <!-- NAVIGATION MENU -->
       <nav class="hidden lg:flex gap-4 items-center justify-start">
+  {% for link in linklists['main-menu'].links %}
+    {% if link.title == 'Home' %}
+      <div class="relative">
+        <a
+          class="decoration-dotted underline-offset-2 underline text-base font-semibold hover:text-red-500 {% if link.active %} text-red-600 {% else %} text-white {% endif %}"
+          href="{{ link.url }}"
+        >
+          {{ link.title | upcase }}
+        </a>
+      </div>
+    {% elsif link.title == 'Magazine' %}
+      <div class="relative">
+        <a
+          class="decoration-dotted underline-offset-2 underline text-base font-semibold hover:text-red-500 text-white"
+          href="https://www.deedsmag.com/?fbclid=PAZXh0bgNhZW0CMTEAAaYdoDKwminG0JUNlCVq77hxl1iReWqX8VDMHbfcoSN9z1o2BBmXA4iIu-8_aem_AXTdAWkzcfrHxRaP2dFsdIkD4Haca-X-fU2MtBrEbYs6JC8H0Im5KcPzWMyRSE_5oH5YwlUK4Nlj2zn9eXUqUvfY" target="_blank" rel="noopener noreferrer"
+        >
+          {{ link.title | upcase }}
+        </a>
+      </div>
+    {% elsif link.title == 'Merch' %}
+      <!-- Merch link is hidden, do nothing -->
+    {% else %}
+      {% if link.links != blank %}
+        <div class="relative">
+          <button type="button" class="inline-flex items-center text-base text-black hover:text-red-500">
+            {{ link.title | upcase }}
+          </button>
+        </div>
+      {% else %}
+        <div class="relative">
+          <a
+            class="decoration-dotted underline-offset-2 underline text-base font-semibold hover:text-red-500 {% if link.active %} text-red-600 {% else %} text-white {% endif %}"
+            href="{{ link.url }}"
+          >
+            {{ link.title | upcase }}
+          </a>
+        </div>
+      {% endif %}
+    {% endif %}
+  {% endfor %}
+</nav>
+
+      {% comment %} <nav class="hidden lg:flex gap-4 items-center justify-start">
         {% for link in linklists['main-menu'].links %}
+          {% if link.title == 'Merch' %}         
+          {% endif %}
           {% if link.links != blank %}
             <div class="relative">
               <button type="button" class="inline-flex items-center text-base text-black hover:text-red-500 ">
@@ -39,7 +84,7 @@
             </div>
           {% endif %}
         {% endfor %}
-      </nav>
+      </nav> {% endcomment %}
       <!-- STORE NAME / STORE LOGO -->
       <div class="flex items-center lg:pr-32   justify-center truncate">
         <h1 class="text-xl font-bold truncate">
@@ -97,7 +142,7 @@
           {% render 'icon-search' %}
         </a>
       </div>
-      {% for list in linklists['main-menu'].links %}
+      {% comment %} {% for list in linklists['main-menu'].links %}
         <li class=" border-b text-white border-white">
           <a
             href="{{ list.url }}"
@@ -107,6 +152,42 @@
               {{ list.title | upcase}} 
           </a>
         </li>
+      {% endfor %} {% endcomment %}
+      {% for list in linklists['main-menu'].links %}
+        {% if list.title == 'Home' %}
+          <li class="border-b text-white border-white">
+            <a
+              href="{{ list.url }}"
+              class="block p-4"
+              aria-current="true"
+            >
+              {{ list.title | upcase }} 
+            </a>
+          </li>
+        {% elsif list.title == 'Magazine' %}
+          <li class="border-b text-white border-white">
+            <a
+              href="https://www.deedsmag.com/?fbclid=PAZXh0bgNhZW0CMTEAAaYdoDKwminG0JUNlCVq77hxl1iReWqX8VDMHbfcoSN9z1o2BBmXA4iIu-8_aem_AXTdAWkzcfrHxRaP2dFsdIkD4Haca-X-fU2MtBrEbYs6JC8H0Im5KcPzWMyRSE_5oH5YwlUK4Nlj2zn9eXUqUvfY"
+              class="block p-4"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {{ list.title | upcase }} 
+            </a>
+          </li>
+        {% elsif list.title == 'Merch' %}
+          <!-- Merch link is hidden, do nothing -->
+        {% else %}
+          <li class="border-b text-white border-white">
+            <a
+              href="{{ list.url }}"
+              class="block p-4"
+              aria-current="true"
+            >
+              {{ list.title | upcase }} 
+            </a>
+          </li>
+        {% endif %}
       {% endfor %}
       <div class="w-full pt-28  grid place-items-center">
         <img height="" width="" src="{{ 'deeds.png' | asset_url }}" alt="Default Logo Image" class="w-20 ">

@@ -1,4 +1,4 @@
-<div class="pb-9 bg-black pt-14">
+<div class="pb-9 bg-black pt-14 h-screen">
   {% paginate collection.products by 50 %}
   <h1 class="font-bold text-white text-xl uppercase px-4 py-2">{{collection.title}}</h1>
   <div class="grid  grid-cols-2 lg:grid-cols-4 gap-y-12 gap-x-4 mx-4">
@@ -13,7 +13,7 @@
       </div>
     {% endpaginate %}
     </div>
-    <div class="stock-ticker md:hidden bg-black text-red-500  overflow-hidden select-none flex gap-[var(--gap)] py-1 border-y border-white ">
+    {% comment %} <div class="stock-ticker md:hidden bg-black text-red-500  overflow-hidden select-none flex gap-[var(--gap)] py-1 border-y border-white ">
       {% render 'infinite-scroll' %}
-    </div>
+    </div> {% endcomment %}
 
