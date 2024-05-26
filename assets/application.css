@@ -2187,7 +2187,7 @@ video {
 body {
   font-size: 16px;
   line-height: 1.65;
-  font-family: Futura;
+  font-family: helvetica;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -2539,7 +2539,7 @@ select {
   /* border-radius: calc(var(--radius) / 2); */
   /* border: 1px solid var(--fieldBorders); */
   transition: 0.2s border-color;
-  font-family: Futura;
+  font-family: helvetica;
   font-weight: 700;
 }
 
