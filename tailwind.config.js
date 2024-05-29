@@ -10,7 +10,7 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        Futura: ['Futura', 'sans-serif'],
+        helvetica: ['helvetica', 'sans-serif'],
       },
     },
   },
