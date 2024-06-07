@@ -35,9 +35,10 @@
         <div class="relative md:w-1/2 merch  md:h-full md:border-l text-white hover:text-red-600 border-white bg-black">
         <a  href="{{ link.url }}">
             {% comment %} <img src="{{ 'CROP TOP BLACK.png' | asset_url }}" class="absolute inset-0 w-full h-full md:h-full object-cover" height="" width="" alt="Background Image" /> {% endcomment %}
-            <video autoplay muted loop class="absolute inset-0 w-full h-full md:h-full object-cover">
-              <source src="{{ 'web gif.mp4' | asset_url | video_tag: autoplay:true, loop: true, muted:true, controls: false }}" type="video/mp4">
-            </video>
+            {% comment %} <video autoplay muted loop class="absolute inset-0 w-full h-full md:h-full object-cover">
+              <source src="{{ 'web gif.mp4' | asset_url }}" type="video/mp4">
+            </video> {% endcomment %}
+            <video autoplay muted loop class="absolute inset-0 w-full h-full md:h-full object-cover" src="{{ 'web gif.mp4' | asset_url }}" type="video/mp4"></video>
             <div class="flex items-end justify-center h-full pb-9 md:pb-4" >
                     <h1 class=" bold text-center bg-opacity-50 relative  uppercase text-2xl  font-sans underline-offset-2 underline decoration-dotted hover:underline  cursor-pointer">buy {{ link.title }}</h1>
             </div>
