@@ -38,7 +38,13 @@
             {% comment %} <video autoplay muted loop class="absolute inset-0 w-full h-full md:h-full object-cover">
               <source src="{{ 'web gif.mp4' | asset_url }}" type="video/mp4">
             </video> {% endcomment %}
-            <video preload playesinline autoplay muted loop id="video" class="absolute inset-0 w-full h-full md:h-full object-cover" src="https://cdn.shopify.com/videos/c/o/v/cbcaea885f1b4d55bf252030cda41208.mp4" type="video/mp4"></video>
+            {% comment %} <video preload playesinline autoplay muted loop id="video" class="absolute inset-0 w-full h-full md:h-full object-cover" src="https://cdn.shopify.com/videos/c/o/v/cbcaea885f1b4d55bf252030cda41208.mp4" type="video/mp4"></video> {% endcomment %}
+            <video muted autoplay playsinline loop class="absolute inset-0 w-full h-full md:h-full object-cover">
+    <source src="https://cdn.shopify.com/videos/c/o/v/cbcaea885f1b4d55bf252030cda41208.mp4"
+                  type="video/mp4">
+    <source src="https://cdn.shopify.com/videos/c/o/v/cbcaea885f1b4d55bf252030cda41208.mp4"
+                  type="video/mp4">
+            </video>
             <div class="flex items-end justify-center h-full pb-9 md:pb-4" >
                     <h1 class=" bold text-center bg-opacity-50 relative  uppercase text-2xl  font-sans underline-offset-2 underline decoration-dotted hover:underline  cursor-pointer">buy {{ link.title }}</h1>
             </div>
