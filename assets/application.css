@@ -1014,10 +1014,6 @@ video {
   height: 2.5rem;
 }
 
-.h-11 {
-  height: 2.75rem;
-}
-
 .h-12 {
   height: 3rem;
 }
@@ -1076,10 +1072,6 @@ video {
 
 .h-screen {
   height: 100vh;
-}
-
-.h-14 {
-  height: 3.5rem;
 }
 
 .w-0 {
@@ -1347,10 +1339,6 @@ video {
   flex-wrap: wrap;
 }
 
-.place-items-center {
-  place-items: center;
-}
-
 .content-center {
   align-content: center;
 }
@@ -1409,10 +1397,6 @@ video {
 
 .gap-\[var\(--gap\)\] {
   gap: var(--gap);
-}
-
-.gap-5 {
-  gap: 1.25rem;
 }
 
 .gap-x-2 {
